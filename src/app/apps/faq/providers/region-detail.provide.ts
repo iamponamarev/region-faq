@@ -9,11 +9,7 @@ import {ActivatedRoute} from "@angular/router";
 export const REGION_DETAIL = new InjectionToken("Get region detail by code")
 
 
-const regionDetailByApiFactory = (service:FaqService, route:ActivatedRoute):Observable<Region> => {
-  return route.params.pipe(
-    switchMap(params => service.getByCode(params['region']))
-  )
-}
+
 
 const regionDetailByStoreFactory = (store:FaqStoreService, route:ActivatedRoute):Observable<Region> => {
   return route.params.pipe(
@@ -22,11 +18,6 @@ const regionDetailByStoreFactory = (store:FaqStoreService, route:ActivatedRoute)
 }
 
 
-export const REGION_DETAIL_BY_API_PROVIDER:Provider = {
-  provide:REGION_DETAIL,
-  deps:[FaqService, ActivatedRoute],
-  useFactory: regionDetailByApiFactory
-}
 
 export const REGION_DETAIL_BY_STORE_PROVIDER:Provider = {
   provide:REGION_DETAIL,
