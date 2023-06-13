@@ -1,0 +1,29 @@
+<tui-island>
+  <p class="tui-island__category">category</p>
+  <div class="">
+    <a [routerLink]="['../','new']" class="tui-space_bottom-3" tuiButton size="m"  style="width:100%">
+      Созадть регион
+    </a>
+  </div>
+  <p class="tui-island__paragraph tui-space_bottom-3">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+    et dolore magna aliqua.
+  </p>
+  <h3 class="tui-island__title">Регионы</h3>
+  <div class="tui-island__content">
+    <div class="region-list" *ngIf="(regions$ | async) as regions">
+      <a
+        *ngFor="let region of regions"
+        class="region-link"
+        routerLinkActive="region-link_action"
+        [routerLink]="['../',region.code]">
+        <tui-badge
+          size="m"
+          [value]="region.code"
+        ></tui-badge
+     >
+      </a>
+    </div>
+
+  </div>
+</tui-island>

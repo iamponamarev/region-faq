@@ -1,0 +1,10 @@
+.region-list{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+
+.region-link_action tui-badge{
+  background: #526ed3;
+}

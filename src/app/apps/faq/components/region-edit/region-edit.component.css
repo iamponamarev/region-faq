@@ -1,0 +1,8 @@
+.region-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.region-title h3{
+  margin-bottom: 0;
+}

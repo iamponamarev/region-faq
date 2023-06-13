@@ -1,0 +1,122 @@
+
+  <div>
+
+    <form
+      [appRegionForm]="region$ | async"
+      [formGroup]="form"
+      (submit)="onSubmit()">
+      <tui-island class="tui-space_bottom-3">
+        <p class="tui-island__category">Редактор вопросов</p>
+
+        <div class="region-title  tui-space_bottom-3">
+          <h3 class="tui-island__title">Регион</h3>
+
+          <ng-container *ngIf="(region$ | async) as region">
+            <button
+              tuiButton
+              type="button"
+              appearance="accent"
+              size="s"
+              (click)="onClickRemoveRegion(region)"
+              class=""
+            >
+              Удалить
+            </button>
+          </ng-container>
+
+        </div>
+
+
+      <div class="tui-row tui-space_bottom-5">
+        <div class="tui-col_md-6">
+          <tui-input
+            formControlName="title"
+          >
+            Название региона
+            <input
+              tuiTextfield
+              inputmode="numeric"
+            />
+          </tui-input>
+        </div>
+        <div class="tui-col_md-6">
+          <tui-input
+            formControlName="code"
+          >
+            Код региона
+            <input
+              tuiTextfield
+
+            />
+          </tui-input>
+        </div>
+      </div>
+      </tui-island>
+
+      <div class="region-title tui-space_bottom-4">
+
+        <h3 class="tui-text_h3">Вопросы</h3>
+        <button
+          tuiButton
+          type="button"
+          appearance="secondary"
+          size="s"
+          (click)="addFaq()"
+          class=""
+        >
+          Добавит вопрос +
+        </button>
+      </div>
+
+
+      <div class="tui-space_bottom-3">
+        <div  *ngIf="faqFormArray.length > 0; else placeholder">
+          <tui-island class="tui-space_bottom-4" *ngFor="let formFaq of faqFormArray;let i = index">
+          <div  >
+            <div [formGroup]="formFaq">
+
+              <tui-input
+                class="tui-space_bottom-2"
+                formControlName="TITLE"
+              >
+                Вопрос
+                <input
+                  tuiTextfield
+                />
+              </tui-input>
+              <tui-text-area formControlName="TEXT"  [expandable]="true">
+                Ответ
+              </tui-text-area>
+              <div class="tui-space_left-1 tui-space_top-1">
+                <a tuiLink mode="negative"
+                                 (click)="onClickRemoveFaq(i)">Удалить</a></div>
+
+            </div>
+          </div>
+          </tui-island>
+        </div>
+      </div>
+
+      <button
+        tuiButton
+        size="m"
+        type="submit"
+        appearance="primary"
+      >
+        Сохранить
+      </button>
+
+    </form>
+
+
+  </div>
+
+
+
+<ng-template #placeholder>
+  <div>
+    <p class="region-muted tui-text_body-m">
+      Вопросы не заданы
+    </p>
+  </div>
+</ng-template>
